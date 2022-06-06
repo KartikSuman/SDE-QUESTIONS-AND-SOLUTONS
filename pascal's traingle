@@ -1,0 +1,27 @@
+long long fact(long long n)
+{
+    if(n==0)return 1;
+    else
+    return n*fact(n-1);
+}
+long long comb(int row,int col)   //for finding a specific element
+{
+    return (fact(row)/(fact(row-col)*fact(col)));
+}
+vector<vector<long long int>> printPascal(int n) 
+{
+ vector<vector<long long int>> r(n);
+
+    for(int i=0;i<n;i++)
+    {
+        r[i].resize(i+1);
+        for(int j=0;j<r[i].size();j++)
+        {
+            if(j==0 || j==r[i].size()-1)
+                r[i][j]=1;
+            else
+            r[i][j]=r[i-1][j]+r[i-1][j-1];
+        }
+    }
+    return r;  
+}
